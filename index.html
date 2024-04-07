@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>Password Generator</title>
+</head>
+<body>
+    
+    <main>
+        <div class="container">
+            <h1>Random Password Generator</h1>
+            <div class="password-generator-container">
+                <input class="password-wrapper" type="text" name="password" readonly onclick="copyOnClick()">
+                <button class="generate-btn" onclick="generate()">Generate!</button>
+            </div>
+            <div class="password-length-wrapper">
+                <div>
+                    <h1>Password Length:</h1>
+                    <h1 class="password-length">10</h1>
+                </div>
+                <input class="password-range" type="range" min="2" max="50" value="10" step="1" onchange="setPassLength(this.value)" oninput="setPassLength(this.value)"/>
+            </div>
+            <div class="char-used">
+                <label for="upper">ABC</label>
+                <input id= "upper" type="checkbox" checked>
+                <label for="lower">abc</label>
+                <input id= "lower" type="checkbox" checked>
+                <label for="num">123</label>
+                <input id= "num" type="checkbox" checked>
+                <label for="sign">#@&</label>
+                <input id= "sign" type="checkbox" checked>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
