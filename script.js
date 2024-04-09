@@ -1,6 +1,7 @@
 let passwordLengthTXT = document.querySelector(".password-length");
 let passwordWrapper = document.querySelector(".password-wrapper");
 let passwordLength = 10;
+let isGenerated = false;
 
 function setPassLength(value) {
     passwordLength = value;
@@ -14,6 +15,7 @@ function generate() {
     const sign = document.querySelector("#sign").checked;
     const password = generatePassword(passwordLength, upper, lower, num, sign);
     passwordWrapper.value = password;
+    isGenerated = true;
 }
 
 function generatePassword(length, upper, lower, num, signs) {
@@ -44,8 +46,15 @@ function generatePassword(length, upper, lower, num, signs) {
 }
 
 function copyOnClick() {
-    passwordWrapper.select();
-    passwordWrapper.setSelectionRange(0, 99999);
-    navigator.clipboard.writeText(passwordWrapper.value);
-    alert("password copied");
+    if(isGenerated){
+        passwordWrapper.select();
+        passwordWrapper.setSelectionRange(0, 99999);
+        navigator.clipboard.writeText(passwordWrapper.value);
+        document.querySelector(".copied").style.animation = "popup-in 1s ease";
+        setTimeout(() => {
+            document.querySelector(".copied").style.animation = "popup-out 1s ease";
+        }, 900);
+    }else{
+        alert("please generate a password!");
+    }
 }
